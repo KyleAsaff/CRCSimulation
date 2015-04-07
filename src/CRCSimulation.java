@@ -104,7 +104,7 @@ public class CRCSimulation {
 	
 	// Method to read 1520 byte binary number from file into a string
 	public static String readFile(String fileName) throws IOException {
-        return new String(Files.readAllBytes(Paths.get("src/SampleBinary.txt")));
+        	return new String(Files.readAllBytes(Paths.get("src/SampleBinary.txt")));
 	}
 	
 	public static void main(String[] args) throws IOException {
