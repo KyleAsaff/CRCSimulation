@@ -119,26 +119,25 @@ public class CRCSimulation {
 		System.out.println(bitstring+"\n");
         
 		// Perform the CRC check 50 times
-        for(int j=1; j<51; j++) {
-    		Random r = new Random();
-    		int lowest = 0;
-    		int highest = bitstring.length()-1;
+        	for(int j=1; j<51; j++) {
+    			Random r = new Random();
+    			int lowest = 0;
+    			int highest = bitstring.length()-1;
     		
-    		//generate random burst error size
-    		int randomErrorSize = r.nextInt(highest-lowest)+lowest;
+    			//generate random burst error size
+    			int randomErrorSize = r.nextInt(highest-lowest)+lowest;
     		
-            System.out.println("Size of burst error: "+randomErrorSize+" bits");
-            String errorBitStream = randomError(bitstring, randomErrorSize);
-        	System.out.println("Experiment "+j+" out of 50");
-			for(int i=0; i<bitstring.length(); i++)
-				message.add(Character.getNumericValue(errorBitStream.charAt(i)));
-			for(int i=0; i<divisor.length(); i++)
-				generator.add(Character.getNumericValue(divisor.charAt(i)));
-			check(message, generator);
-			message.clear();
-			generator.clear();
-        }
-        
-        System.out.println("\nThe error was detected "+detected+" times out of the 50 experiments.");
+            		System.out.println("Size of burst error: "+randomErrorSize+" bits");
+            		String errorBitStream = randomError(bitstring, randomErrorSize);
+        		System.out.println("Experiment "+j+" out of 50");
+				for(int i=0; i<bitstring.length(); i++)
+					message.add(Character.getNumericValue(errorBitStream.charAt(i)));
+				for(int i=0; i<divisor.length(); i++)
+					generator.add(Character.getNumericValue(divisor.charAt(i)));
+				check(message, generator);
+				message.clear();
+				generator.clear();
+        	}
+        	System.out.println("\nThe error was detected "+detected+" times out of the 50 experiments.");
 	}
 }
